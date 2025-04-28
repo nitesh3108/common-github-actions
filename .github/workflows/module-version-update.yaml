@@ -17,6 +17,7 @@ on:
         description: 'CSM program version, ex: v1.12.0, v1.13.0, ...'
         required: true
         type: string
+      
 
 jobs:
   read-values:
@@ -79,23 +80,6 @@ jobs:
     - name: Print environment variables
       run: |
         pwd
-        echo "CSM_VERSION: $CSM_VERSION"
-        echo "CSM_OPERATOR: $CSM_OPERATOR"
-        echo "CSI_POWERSCALE: $CSI_POWERSCALE"
-        echo "CSI_POWERSTORE: $CSI_POWERSTORE"
-        echo "CSI_POWERMAX: $CSI_POWERMAX"
-        echo "CSI_VXFLEXOS: $CSI_VXFLEXOS"
-        echo "CSI_UNITY: $CSI_UNITY"
-        echo "CSM_REPLICATION: $CSM_REPLICATION"
-        echo "KARAVI_RESILIENCY: $KARAVI_RESILIENCY"
-        echo "CSM_AUTHORIZATION_V2: $CSM_AUTHORIZATION_V2"
-        echo "CSIREVERSEPROXY: $CSIREVERSEPROXY"
-        echo "KARAVI_OBSERVABILITY: $KARAVI_OBSERVABILITY"
-        echo "KARAVI_METRICS_POWERFLEX: $KARAVI_METRICS_POWERFLEX"
-        echo "CSM_METRICS_POWERSTORE: $CSM_METRICS_POWERSTORE"
-        echo "CSM_METRICS_POWERSCALE: $CSM_METRICS_POWERSCALE"
-        echo "CSM_METRICS_POWERMAX: $CSM_METRICS_POWERMAX"
-        echo "KARAVI_TOPOLOGY: $KARAVI_TOPOLOGY"
-        echo "OTEL_COLLECTOR: $OTEL_COLLECTOR"
+        bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh 
 
         
