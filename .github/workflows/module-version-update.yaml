@@ -31,8 +31,7 @@ jobs:
     - name: Read specific values from csm-common.mk
       id: read_values
       run: |
-        pwd > path
-        echo "Inside CSM repo --> $path"
+        pwd
         UBI_BASEIMAGE=$(grep -E '^UBI_BASEIMAGE=' csm/config/csm-common.mk | cut -d '=' -f 2)
         CSM_BASEIMAGE=$(grep -E '^CSM_BASEIMAGE=' csm/config/csm-common.mk | cut -d '=' -f 2)
         DEFAULT_GOVERSION=$(grep -E '^DEFAULT_GOVERSION=' csm/config/csm-common.mk | cut -d '=' -f 2)
@@ -50,8 +49,7 @@ jobs:
 
     - name: Print environment variables
       run: |
-        pwd > path
-        echo "Inside CSM-operator repo --> $path"
+        pwd 
         echo "UBI_BASEIMAGE: $UBI_BASEIMAGE"
         echo "CSM_BASEIMAGE: $CSM_BASEIMAGE"
         echo "DEFAULT_GOVERSION: $DEFAULT_GOVERSION"
