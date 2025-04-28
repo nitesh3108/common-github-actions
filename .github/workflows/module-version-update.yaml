@@ -1,0 +1,59 @@
+# Copyright (c) 2025 Dell Inc., or its subsidiaries. All Rights Reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#  http://www.apache.org/licenses/LICENSE-2.0
+
+# Reusable workflow to perform operator version update
+# To perform csm-operator version update, needs three arguments as input to the workflow
+name: Operator version update
+
+on:
+  workflow_call:
+    inputs:
+      csm-version:
+        description: 'CSM program version, ex: v1.12.0, v1.13.0, ...'
+        required: true
+        type: string
+
+jobs:
+  read-values:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout csm repository
+      uses: actions/checkout@v2
+      with:
+        repository: dell/csm
+        path: csm
+
+    - name: Read specific values from csm-common.mk
+      id: read_values
+      run: |
+        pwd > path
+        echo "Inside CSM repo --> $path"
+        UBI_BASEIMAGE=$(grep -E '^UBI_BASEIMAGE=' csm/config/csm-common.mk | cut -d '=' -f 2)
+        CSM_BASEIMAGE=$(grep -E '^CSM_BASEIMAGE=' csm/config/csm-common.mk | cut -d '=' -f 2)
+        DEFAULT_GOVERSION=$(grep -E '^DEFAULT_GOVERSION=' csm/config/csm-common.mk | cut -d '=' -f 2)
+        DEFAULT_GOIMAGE=$(grep -E '^DEFAULT_GOIMAGE=' csm/config/csm-common.mk | cut -d '=' -f 2)
+        echo "UBI_BASEIMAGE=$UBI_BASEIMAGE" >> $GITHUB_ENV
+        echo "CSM_BASEIMAGE=$CSM_BASEIMAGE" >> $GITHUB_ENV
+        echo "DEFAULT_GOVERSION=$DEFAULT_GOVERSION" >> $GITHUB_ENV
+        echo "DEFAULT_GOIMAGE=$DEFAULT_GOIMAGE" >> $GITHUB_ENV
+
+    - name: Checkout csm-operator repository
+      uses: actions/checkout@v2
+      with:
+        repository: dell/csm-operator
+        path: csm-operator        
+
+    - name: Print environment variables
+      run: |
+        pwd > path
+        echo "Inside CSM-operator repo --> $path"
+        echo "UBI_BASEIMAGE: $UBI_BASEIMAGE"
+        echo "CSM_BASEIMAGE: $CSM_BASEIMAGE"
+        echo "DEFAULT_GOVERSION: $DEFAULT_GOVERSION"
+        echo "DEFAULT_GOIMAGE: $DEFAULT_GOIMAGE"
+        
