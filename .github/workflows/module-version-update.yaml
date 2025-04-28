@@ -74,7 +74,7 @@ jobs:
     - name: Checkout csm-operator repository
       uses: actions/checkout@v2
       with:
-        repository: nitesh8812/csm-operator
+        repository: nitesh3108/csm-operator
         path: csm-operator
 
     - name: Print environment variables
