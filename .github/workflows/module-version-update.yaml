@@ -8,7 +8,7 @@
 
 # Reusable workflow to perform operator version update
 # To perform csm-operator version update, needs three arguments as input to the workflow
-name: Operator version update
+name: Module version update
 
 on:
   workflow_call:
@@ -85,6 +85,6 @@ jobs:
         echo "WORKSPACE --> $GITHUB_WORKSPACE"
         echo " csm version --> ${{ inputs.csm-version }} "
         echo " update option --> ${{ inputs.update-option}} "
-        bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh 
+        bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
 
         
