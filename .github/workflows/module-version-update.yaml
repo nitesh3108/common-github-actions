@@ -80,6 +80,7 @@ jobs:
     - name: Print environment variables
       run: |
         pwd
+        echo "WORKSPACE --> $GITHUB_WORKSPACE"
         bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh 
 
         
