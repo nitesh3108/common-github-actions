@@ -83,6 +83,8 @@ jobs:
       run: |
         pwd
         echo "WORKSPACE --> $GITHUB_WORKSPACE"
+        echo " csm version --> ${{ inputs.csm-version }} "
+        echo " update option --> ${{ inputs.update-option}} "
         bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh 
 
         
