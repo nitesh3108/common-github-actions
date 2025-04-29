@@ -89,6 +89,6 @@ jobs:
 
           dos2unix $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh
           chmod +x $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh
-          sh $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
+          bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
          
     
