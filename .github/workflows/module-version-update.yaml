@@ -30,6 +30,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: nitesh3108/csm
+        path: csm
 
     - name: Read values from csm-versions.yaml
       id: read_values
