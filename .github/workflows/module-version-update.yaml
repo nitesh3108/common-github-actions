@@ -81,8 +81,10 @@ jobs:
 
     - name: Print environment variables
       run: |
-          echo "Version provided --> ${{ inputs.latest-version }}"
+          echo "Version provided --> ${{ inputs.csm-version }}"
+          input_ver=${{ inputs.csm-version }}
           echo "Version from csm repo --> $CSM_VERSION"
+          echo "Flag provided --> ${{ inputs.update-option}}"
          
           if [ "$CSM_VERSION" == "${{ inputs.csm-version }}" ]; then
           echo " Versions are maching"
@@ -90,4 +92,15 @@ jobs:
           echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
           fi
 
+          trim_csm_version=${CSM_VERSION//./}
+          trim_input_version=${input_ver//./}
+
+          echo "csm ver --> $trim_csm_version"
+          echo "input ver --> $trim_input_version"
+
+          if [ "$trim_csm_version" == "$trim_input_version" ]; then
+          echo " Versions are maching"
+          else
+          echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
+          fi
         
