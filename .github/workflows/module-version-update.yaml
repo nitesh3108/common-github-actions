@@ -107,13 +107,13 @@ jobs:
           w_csm_versio=$(echo $CSM_VERSION | sed 's/v//')
           w_input_version=$(echo $input_ver | sed 's/v//')
 
-          if [ "$w_input_version" == "$w_csm_versio" ]; then 
+          if [ "${w_input_version}" == "${w_csm_versio}" ]; then 
           echo " Versions are maching"
           else
           echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
           fi
 
-          if [[ "$w_input_version" == "$w_csm_versio" ]]; then 
+          if [[ "$w_input_version" == "${w_csm_versio}" ]]; then 
           echo " Versions are maching"
           else
           echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
