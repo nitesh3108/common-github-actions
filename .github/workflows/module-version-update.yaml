@@ -118,3 +118,5 @@ jobs:
           else
           echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
           fi
+
+          shell: bash
