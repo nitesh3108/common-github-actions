@@ -29,8 +29,7 @@ jobs:
     - name: Checkout csm repository
       uses: actions/checkout@v2
       with:
-        repository: dell/csm
-        path: csm
+        repository: nitesh3108/csm
 
     - name: Read values from csm-versions.yaml
       id: read_values
