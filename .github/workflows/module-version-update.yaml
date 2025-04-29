@@ -78,7 +78,8 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: nitesh3108/csm-operator
-    - name: Update operator version
+        
+    - name: Updating Module version
       run: |
           echo "Input csm version --> ${{ inputs.csm-version }}"
           echo "Update flag --> ${{ inputs.update-option }}"
