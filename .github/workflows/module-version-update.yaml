@@ -81,10 +81,13 @@ jobs:
 
     - name: Print environment variables
       run: |
-        pwd
-        echo "WORKSPACE --> $GITHUB_WORKSPACE"
-        echo " csm version --> ${{ inputs.csm-version }} "
-        echo " update option --> ${{ inputs.update-option}} "
-        bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
+          echo "Version provided --> ${{ inputs.latest-version }}"
+          echo "Version from csm repo --> $CSM_VERSION"
+         
+          if [ "$CSM_VERSION" == "${{ inputs.csm-version }}" ]; then
+          echo " Versions are maching"
+          else
+          echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
+          fi
 
         
