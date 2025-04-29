@@ -78,7 +78,10 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: nitesh3108/csm-operator
-        
+
+    - name: Install dos2unix
+      run: sudo apt-get update && sudo apt-get install -y dos2unix
+
     - name: Updating Module version
       run: |
           echo "Input csm version --> ${{ inputs.csm-version }}"
@@ -87,6 +90,5 @@ jobs:
           dos2unix $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh
           chmod +x $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh
           ./$GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
-          
          
     
