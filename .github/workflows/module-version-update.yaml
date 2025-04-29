@@ -84,7 +84,9 @@ jobs:
           echo "Input csm version --> ${{ inputs.csm-version }}"
           echo "Update flag --> ${{ inputs.update-option }}"
 
-          bash $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
+          dos2unix $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh
+          chmod +x $GITHUB_WORKSPACE/.github/scripts/module-version-update.sh
+          ./$GITHUB_WORKSPACE/.github/scripts/module-version-update.sh ${{ inputs.csm-version }} ${{ inputs.update-option}}
           
          
     
