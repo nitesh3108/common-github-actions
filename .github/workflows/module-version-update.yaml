@@ -118,4 +118,11 @@ jobs:
           else
           echo "Make sure the Latest version is updated to csm repo csm-version.yaml file"
           fi
+
+          echo "NEWWW"
+          if [ "$w_csm_versio -eq "$w_input_version" ]; then
+          echo "NEWW, matching"
+          else
+          echo "NEWW, not matching"
+          fi
       shell: bash
