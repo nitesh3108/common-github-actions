@@ -80,7 +80,7 @@ jobs:
       - name: Checkout csm-operator repository
         uses: actions/checkout@v4
         with:
-          repository: dell/csm-operator
+          repository: nitesh3108/csm-operator
 
       - name: Install dos2unix
         run: sudo apt-get update && sudo apt-get install -y dos2unix
